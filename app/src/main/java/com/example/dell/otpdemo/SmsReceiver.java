@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 
 public class SmsReceiver extends BroadcastReceiver
 {
-    Pattern p = Pattern.compile("(|^)\\d{4}");
 
     @Override
     public void onReceive(Context context, Intent intent)
@@ -31,16 +30,6 @@ public class SmsReceiver extends BroadcastReceiver
 
                     SmsMessage currentMessage = SmsMessage.createFromPdu((byte[]) pdusObj[i]);
                     String message = currentMessage .getDisplayMessageBody();
-
-                    Matcher m = p.matcher(message);
-
-                    if(m.find())
-                    {
-                        intent = new Intent(context,MainActivity.class);
-                        intent.putExtra("OTP",m.group(0));
-
-                    }
-
                     Log.i("Message",  currentMessage.getMessageBody());
                     Toast.makeText(context, "SMS Received : "+currentMessage.getMessageBody(),Toast.LENGTH_LONG).show();
 
