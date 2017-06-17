@@ -13,7 +13,7 @@ public class MainActivity extends Activity
     {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sms_receiver);
         OtpNumber = (TextView) findViewById(R.id.otpTextView);
         Intent intent = getIntent();
         String message = intent.getStringExtra("OTP");
